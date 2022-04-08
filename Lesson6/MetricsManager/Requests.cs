@@ -1,0 +1,4 @@
+﻿namespace MetricsManager.Requests
+{
+
+}
