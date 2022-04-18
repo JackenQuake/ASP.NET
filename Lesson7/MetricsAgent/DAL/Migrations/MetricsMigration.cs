@@ -2,9 +2,15 @@
 
 namespace MetricsAgent.DAL.Migrations
 {
+	/// <summary>
+	/// Создание и удаление таблиц базы данных на основе FluentMigratior
+	/// </summary>
 	[Migration(1)]
 	public class MetricsMigration : Migration
 	{
+		/// <summary>
+		/// Создание таблиц базы данных
+		/// </summary>
 		public override void Up()
 		{
 			Create.Table("cpumetrics")
@@ -29,6 +35,9 @@ namespace MetricsAgent.DAL.Migrations
 				.WithColumn("Time").AsInt64();
 		}
 
+		/// <summary>
+		/// Удаление таблиц базы данных
+		/// </summary>
 		public override void Down()
 		{
 			Delete.Table("cpumetrics");

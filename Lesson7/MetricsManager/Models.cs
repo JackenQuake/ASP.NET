@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace MetricsManager.Models
 {
+	/// <summary>
+	/// Структуры данных, хранящиеся в репозитории
+	/// </summary>
 	public class AgentInfo
 	{
 		public int AgentId { get; set; }

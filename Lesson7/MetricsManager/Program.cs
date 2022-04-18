@@ -6,6 +6,9 @@ using Microsoft.Extensions.Hosting;
 
 namespace MetricsManager
 {
+	/// <summary>
+	/// Головной запускаемый файл программы
+	/// </summary>
 	public class Program
 	{
 		public static void Main(string[] args)
@@ -22,8 +25,7 @@ namespace MetricsManager
 				//NLog: устанавливаем отлов исключений
 				logger.Error(exception, "Stopped program because of exception");
 				throw;
-			}
-			finally
+			} finally
 			{
 				// Остановка логгера 
 				NLog.LogManager.Shutdown();
@@ -31,10 +33,12 @@ namespace MetricsManager
 		}
 
 		public static IHostBuilder CreateHostBuilder(string[] args) =>
-			Host.CreateDefaultBuilder(args).ConfigureWebHostDefaults(webBuilder => {
+			Host.CreateDefaultBuilder(args).ConfigureWebHostDefaults(webBuilder =>
+			{
 				webBuilder.UseStartup<Startup>();
 			})
-			.ConfigureLogging(logging => {
+			.ConfigureLogging(logging =>
+			{
 				logging.ClearProviders(); // Создание провайдеров логирования
 				logging.SetMinimumLevel(LogLevel.Trace); // Устанавливаем минимальный уровень логирования
 			}).UseNLog(); // Добавляем библиотеку nlog

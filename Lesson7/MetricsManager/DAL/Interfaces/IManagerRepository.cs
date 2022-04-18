@@ -12,10 +12,10 @@ namespace MetricsManager.DAL.Interfaces
 		/// <summary>
 		/// Получает метрики на заданном диапазоне времени для определенного агента
 		/// </summary>
-		/// <param name="agentId">идентификатор агента</param>
-		/// <param name="fromTime">начальная метрика времени в секундах с 01.01.1970</param>
-		/// <param name="toTime">конечная метрика времени в секундах с 01.01.1970</param>
-		/// <returns>Список метрик, сохранённых в заданном диапазоне времени</returns>
+		/// <param name="from">начальная метрика времени в секундах с 01.01.1970</param>
+		/// <param name="to">конечная метрика времени в секундах с 01.01.1970</param>
+		/// <param name="id">идентификатор агента</param>
+		/// <returns>Список метрик, сохранённых в заданном диапазоне времени для определенного агента</returns>
 		IList<T> GetByTimePeriodFromAgent(TimeSpan from, TimeSpan to, int id);
 	}
 }

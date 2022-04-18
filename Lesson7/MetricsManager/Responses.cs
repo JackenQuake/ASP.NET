@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+/// <summary>
+/// Структуры данных на уровне контроллера
+/// </summary>
 namespace MetricsManager.Responses
 {
 	public class AllAgentInfoResponse

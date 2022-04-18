@@ -3,6 +3,9 @@ using Quartz;
 using Quartz.Spi;
 using System;
 
+/// <summary>
+/// Фабрика задач для пакета Quartz
+/// </summary>
 public class SingletonJobFactory : IJobFactory
 {
 	private readonly IServiceProvider _serviceProvider;

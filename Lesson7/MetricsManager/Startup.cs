@@ -19,6 +19,9 @@ using System.Reflection;
 
 namespace MetricsManager
 {
+	/// <summary>
+	/// Настройка всех подсистем и сервисов
+	/// </summary>
 	public class Startup
 	{
 		public Startup(IConfiguration configuration)
@@ -81,7 +84,8 @@ namespace MetricsManager
 				jobType: typeof(RamMetricJob),
 				cronExpression: "0/5 * * * * ?")); // Запускать каждые 5 секунд
 			services.AddHostedService<QuartzHostedService>();
-			services.AddSwaggerGen(c => {
+			services.AddSwaggerGen(c =>
+			{
 				c.SwaggerDoc("v1", new OpenApiInfo
 				{
 					Version = "v1",
@@ -107,7 +111,8 @@ namespace MetricsManager
 
 			app.UseAuthorization();
 
-			app.UseEndpoints(endpoints => {
+			app.UseEndpoints(endpoints =>
+			{
 				endpoints.MapControllers();
 			});
 
@@ -119,7 +124,8 @@ namespace MetricsManager
 			// включение middleware для генерации swagger-ui
 			// указываем эндпоинт Swagger JSON (куда обращаться за сгенерированной спецификацией,
 			// по которой будет построен UI).
-			app.UseSwaggerUI(c => {
+			app.UseSwaggerUI(c =>
+			{
 				c.SwaggerEndpoint("/swagger/v1/swagger.json", "Metrics Manager API");
 				c.RoutePrefix = string.Empty;
 			});

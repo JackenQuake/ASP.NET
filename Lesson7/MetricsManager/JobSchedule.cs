@@ -1,5 +1,8 @@
 ﻿using System;
 
+/// <summary>
+/// Расписание задач для пакета Quartz
+/// </summary>
 public class JobSchedule
 {
 	public JobSchedule(Type jobType, string cronExpression)

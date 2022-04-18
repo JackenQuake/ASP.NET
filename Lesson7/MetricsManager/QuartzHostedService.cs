@@ -8,6 +8,9 @@ using Quartz.Spi;
 
 namespace MetricsManager
 {
+	/// <summary>
+	/// Настройка пакета Quartz
+	/// </summary>
 	public class QuartzHostedService : IHostedService
 	{
 		private readonly ISchedulerFactory _schedulerFactory;

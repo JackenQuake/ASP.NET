@@ -2,6 +2,9 @@ using System;
 using System.Collections.Generic;
 using MetricsManager.Responses;
 
+/// <summary>
+/// «апросы менеджера к агенту и возвращаемые агентом структуры данных
+/// </summary>
 namespace MetricsManager.Client.Responses
 {
 	public class AllCpuMetricsApiResponse

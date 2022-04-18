@@ -4,6 +4,9 @@ using MetricsAgent.Responses;
 
 namespace MetricsAgent
 {
+	/// <summary>
+	/// Описание преобразования типов для AutoMapper
+	/// </summary>
 	public class MapperProfile : Profile
 	{
 		public MapperProfile()
