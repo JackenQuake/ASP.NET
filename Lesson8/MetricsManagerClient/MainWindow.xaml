@@ -1,0 +1,37 @@
+﻿<Window x:Class="MetricsManagerClient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MetricsManagerClient"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="800" Width="1600">
+    <UniformGrid Rows="2" Columns="3">
+        <local:ChartCPU x:Name="CPUChart" />
+        <local:ChartRAM x:Name="RAMChart"/>
+        <local:ChartHDD x:Name="HDDChart"/>
+        <local:ChartNetwork x:Name="NetworkChart"/>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"></RowDefinition>
+                <RowDefinition Height="70"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="120"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">Агент</TextBlock>
+            <ComboBox Grid.Row="0" Grid.Column="1" Name="agentsList" FontSize="25" Width="370" Height="40" VerticalAlignment="Center" ItemsSource="{Binding cbItems}"/>
+            <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">Период</TextBlock>
+            <ComboBox Grid.Row="1" Grid.Column="1" Name="periodsList" FontSize="25" Width="370" Height="40" VerticalAlignment="Center" SelectedIndex="0">
+                <TextBlock>10 минут</TextBlock>
+                <TextBlock>60 минут</TextBlock>
+                <TextBlock>6 часов</TextBlock>
+                <TextBlock>24 часа</TextBlock>
+            </ComboBox>
+            <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Width="400" Height="150" Click="UpdateClick" FontSize="25">Обновить</Button>
+        </Grid>
+        <local:ChartDotNet x:Name="DotNetChart" />
+    </UniformGrid>
+</Window>

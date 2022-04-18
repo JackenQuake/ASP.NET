@@ -1,0 +1,66 @@
+﻿<UserControl x:Class="MetricsManagerClient.ChartNetwork"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+             xmlns:local="clr-namespace:MetricsManagerClient"
+             d:DataContext="{d:DesignInstance Type=local:ChartNetwork}"
+             mc:Ignorable="d"
+             d:DesignHeight="450" d:DesignWidth="500">
+    <Grid Height="380" Width="500">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="3*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.Effect>
+            <DropShadowEffect BlurRadius="15" Direction="-90" RenderingBias="Quality" Opacity=".2" ShadowDepth="1"/>
+        </Grid.Effect>
+        <Grid.OpacityMask>
+            <VisualBrush Visual="{Binding ElementName=Border2}" />
+        </Grid.OpacityMask>
+        <Grid.Resources>
+            <Style TargetType="lvc:ColumnSeries">
+                <Setter Property="StrokeThickness" Value="0"></Setter>
+                <Setter Property="Stroke" Value="White"></Setter>
+                <Setter Property="Fill" Value="White"></Setter>
+                <Setter Property="MaxColumnWidth" Value="5"></Setter>
+            </Style>
+            <Style TargetType="lvc:Axis">
+                <Setter Property="FontSize" Value="12"></Setter>
+                <Setter Property="Foreground" Value="#64FFFFFF"></Setter>
+                <Style.Triggers>
+                    <Trigger Property="AxisOrientation" Value="Y">
+                        <Setter Property="IsMerged" Value="True"></Setter>
+                        <Setter Property="MaxValue" Value="100"></Setter>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+            <Style TargetType="lvc:Separator">
+                <Setter Property="StrokeThickness" Value="1"></Setter>
+                <Setter Property="Stroke" Value="#4BFFFFFF"></Setter>
+                <Style.Triggers>
+                    <Trigger Property="AxisOrientation" Value="X">
+                        <Setter Property="IsEnabled" Value="False"></Setter>
+                        <Setter Property="Step" Value="1"></Setter>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </Grid.Resources>
+        <Border Grid.Row="0" Grid.RowSpan="2" Background="#EB5A13" />
+        <Border Grid.Row="2" Background="White" x:Name="Border2" />
+        <TextBlock Grid.Row="0" TextAlignment="Center" Foreground="White" FontSize="18"> Network Load </TextBlock>
+        <lvc:CartesianChart Name="TimePowerChart" Grid.Row="1" Margin="10, 0, 10, 20" Hoverable="True" DataTooltip="{x:Null}" Series="{Binding ColumnSeriesValues}" />
+        <StackPanel Grid.Row="2" VerticalAlignment="Center" Margin="25, 0">
+            <TextBlock Name="AverageCaption" Opacity=".4" FontSize="13">За последние 12 часов среднее значение</TextBlock>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Name="AverageTextBlock" Foreground="#303030" FontSize="40" Text="10" />
+                <TextBlock Foreground="#303030" FontSize="18" VerticalAlignment="Bottom" Margin="8, 6">DG/sec</TextBlock>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>
